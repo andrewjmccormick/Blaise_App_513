@@ -1,0 +1,201 @@
+﻿<UserControl x:Class="Blaise_App.ExpensesMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+     xmlns:local="clr-namespace:Blaise_App"
+     Unloaded="UserControl_Unloaded">
+
+    <Grid>
+        <Grid.Resources>
+
+
+
+
+
+            <Style TargetType="Button">
+                <Setter Property="Width" Value="100" />
+                <Setter Property="Height" Value="100" />
+                <Setter Property="Margin" Value="100,5,6,6" />
+                <Setter Property="BorderThickness" Value="1.0" />
+                <Setter Property="BorderBrush" Value="AntiqueWhite" />
+                <Setter Property="Background" Value="{StaticResource barBackground}" />
+            </Style>
+            <Style TargetType="Image">
+                <Setter Property="Width" Value="45" />
+                <Setter Property="Height" Value="45" />
+            </Style>
+
+
+
+
+
+
+
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+
+        </Grid.ColumnDefinitions>
+
+
+
+        <!--<Label Content="Survey cases: "  FontWeight="DemiBold" Padding="2,4,2,4" Background="{StaticResource barBackground}" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" />-->
+        <!--<TextBox DockPanel.Dock="Top" Margin="0,0,0,10" Name="txtFilter" TextChanged="txtFilter_TextChanged" />-->
+
+        <ListView Name="lvexpenses" Grid.Row="1" SelectionChanged="ExpensesMenu_SelectionChanged" Grid.ColumnSpan="1">
+            <!--<ListView ItemsSource="{Binding SourceCollection}" Grid.Row="1"
+            SelectionChanged="SurveyDetails_SelectionChanged">-->
+
+
+            <ListView.Resources>
+
+                <Style TargetType="GridViewColumnHeader" >
+                    <Setter Property="FontSize" Value="24"/>
+                    <Setter Property="FontWeight" Value="DemiBold"/>
+
+                    <Setter Property="Margin" Value="0,0,0,0" />
+                </Style>
+
+            </ListView.Resources>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="BorderBrush" Value="LightGray" />
+                    <Setter Property="BorderThickness" Value="2,0,0,2" />
+                    <Setter Property="Margin" Value="-6,0,-6,0" />
+                    <Setter Property="FontSize" Value="25" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
+                    <Style.Triggers>
+
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"></Condition>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"></Setter>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"></Condition>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"></Setter>
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+
+                   
+
+                    <GridViewColumn Width="205">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Right">
+                                    <TextBlock.Inlines>
+                                        <Run Text="   "/>
+                                        <Run Text="{Binding RefNo}"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader  Tag="RefNo" Click="lvUsersColumnHeader_Click">Ref. No.</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <GridViewColumn Width="200">
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Right">
+                                   <Run Text="{Binding ClaimDate, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader 
+                                Tag="ClaimDate" Click="lvUsersColumnHeader_Click">Claim Date</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+                    <!--<GridViewColumn DisplayMemberBinding="{Binding Path=Intno}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader  Tag="Intno" Click="lvUsersColumnHeader_Click">IntNo</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>-->
+
+                    <GridViewColumn Width="300">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Right">
+                                    <Run Text="{Binding TotClaim, StringFormat=N2}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader  Tag="TotClaim" Click="lvUsersColumnHeader_Click">Total (£)</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+
+
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+
+
+        <Grid Grid.Row="2" x:Name="actionBar" Background="{StaticResource barBackground}" Grid.ColumnSpan="2">
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="150" />
+                    <Setter Property="Height" Value="100" />
+                    <Setter Property="Margin" Value="1,2,2,2" />
+                    <Setter Property="BorderThickness" Value="0.3" />
+                    <Setter Property="BorderBrush" Value="AntiqueWhite" />
+                    <Setter Property="Background" Value="{StaticResource barBackground}" />
+                </Style>
+                <Style TargetType="Image">
+                    <Setter Property="Width" Value="98" />
+                    <Setter Property="Height" Value="98" />
+                </Style>
+
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="{Binding Name}"  Padding="5,0,0,0"
+                   Foreground="DarkBlue" FontWeight="Bold" VerticalAlignment="Center" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" >
+
+
+
+
+
+
+
+
+                <Button Name="ViewCases" BorderThickness="2" BorderBrush="AntiqueWhite" ToolTip="View Cases" VerticalAlignment="Center" Click="ViewCases_Click" Content="View Claim" FontWeight="Bold" >
+                </Button>
+                <!--Button Name="RunSurvey" BorderThickness="2" BorderBrush="AntiqueWhite" ToolTip="Start the survey" VerticalAlignment="Center" Click="RunSurvey_Click" Content="Create Expenses Claim" FontWeight="Bold" >
+                </-->
+
+            </StackPanel>
+        </Grid>
+
+
+
+
+    </Grid>
+</UserControl>

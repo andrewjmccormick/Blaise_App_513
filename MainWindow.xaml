@@ -1,0 +1,31 @@
+﻿<Window x:Class="Blaise_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Blaise_App"
+        xmlns:input="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        local:WindowCustomizer.CanMinimize="False"
+        mc:Ignorable="d"
+        Title="CSU Blaise 5 surveys" 
+        Loaded="Window_Loaded"
+        Icon="/Images/icon.png" WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--<Menu Grid.Row="0">
+            <MenuItem Header="_File" >
+                <MenuItem Command="local:ApplicationCommands.ShowSettings" />
+                <MenuItem Command="input:ApplicationCommands.Close" />
+            </MenuItem>
+            <MenuItem Command="local:ApplicationCommands.Refresh" />
+        </Menu>-->
+        <local:Surveys x:Name="surveysMain" Grid.Row="1" />
+        
+
+    </Grid>
+</Window>

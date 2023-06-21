@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Blaise_App.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DeployFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\B5Research\research.nisra.gov.uk</Value>
+    </Setting>
+    <Setting Name="DeployFolderRespond" Type="System.String" Scope="User">
+      <Value Profile="(Default)">c:\B5Respond\respond.nisra.gov.uk</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,20 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StarterKit.Windows"
+        xmlns:WpfConversion="clr-namespace:StatNeth.Blaise.Runtime.WpfConversion;assembly=StatNeth.Blaise.API.Wpf" x:Class="StarterKit.Windows.SurveyWindow"
+        Title="Survey" 
+        
+            HorizontalAlignment="Stretch"
+           	 VerticalAlignment="Stretch"
+    	     HorizontalContentAlignment="Stretch"
+	         VerticalContentAlignment="Stretch"
+             Height="662.941"
+             Width="647.358">
+    
+    <Grid x:Name="mainGrid"/>
+
+
+</Window>
