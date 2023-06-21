@@ -180,14 +180,14 @@ namespace Blaise_App
 
             if (AppController.Instance._connectedtoSurveys == true)
             {
-                bool connected = AppController.Instance.Connect("C:\\B5Surveys", "surveys.nisra.gov.uk", false, false);
+                bool connected = AppController.Instance.Connect("C:\\B5Research", "research.nisra.gov.uk", false, false);
                 //bool connected = AppController.Instance.Connect("C:\\B5Surveys", "surveys.nisra.gov.uk", false);
                 if (connected == true)
                 {
-                    if (System.IO.File.Exists("c:\\Blaise5Controller511\\Blaise5Controller511.exe"))
+                    if (System.IO.File.Exists("c:\\Blaise5Controller513\\Blaise5Controller513.exe"))
                     {
                         //Check for any instances of Blaise5Controller running in the background and only invoke this is there isn't
-                        Process[] p = Process.GetProcessesByName("Blaise5Controller511");
+                        Process[] p = Process.GetProcessesByName("Blaise5Controller513");
                         if (p.Count() == 0)
                         {
                             TimeSpan timesincelastsync = DateTime.Now - AppController.Instance._synctime;
@@ -195,7 +195,7 @@ namespace Blaise_App
                             if (timesincelastsync.Hours > 10)
                             {
                                 ev_repaintsynchronising_buttons();
-                                Task.Delay(1000).ContinueWith(t => Runsync("SURVEYS"));
+                                Task.Delay(1000).ContinueWith(t => Runsync("RESEARCH"));
                             }
 
                         }
@@ -233,10 +233,10 @@ namespace Blaise_App
 
         private void Runsync(string Environment)
         {
-            if (Environment == "SURVEYS")
+            if (Environment == "RESEARCH")
             {
                 //MessageBox.Show(string.Format("Connected to Surveys= {0} CurrentEnvironment =  {1}", AppController.Instance._connectedtoSurveys, AppController.Instance.currentenvironment));
-                AppController.Instance.Looper(AppController.Instance.InstalledonSurveys.Instruments, false, "SURVEYS");
+                AppController.Instance.Looper(AppController.Instance.InstalledonSurveys.Instruments, false, "RESEARCH");
             }
             else if (Environment == "RESPOND")
             {
